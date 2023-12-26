@@ -1,6 +1,7 @@
 const url = 'http://localhost:3001';
 
 
-export const addCourse = async (): Promise<addCourse[]> => {
+// **** fetching create course **** 
+export const addCourse = async (): Promise <addCourse[]> => {
 
 }
