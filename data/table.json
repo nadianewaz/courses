@@ -1,17 +1,30 @@
-
-
 {
-    "tasks": [
+    "table": [
         {
             
             "id": 1,
-            "task": "lorem ipsum" 
+            "created_by": "nitu",
+            "updated_by": "nitu1",
+            "name_en": "nitu2",
+            "name_bn": "nitu3"
         },
         {
+            
             "id": 2,
-            "task": "lorem ipsum" 
-
+            "created_by": "nitu",
+            "updated_by": "nitu1",
+            "name_en": "nitu2",
+            "name_bn": "nitu3"
+        },
+        {
+            
+            "id": 3,
+            "created_by": "nitu",
+            "updated_by": "nitu1",
+            "name_en": "nitu2",
+            "name_bn": "nitu3"
         }
+       
     ]
 
 }
