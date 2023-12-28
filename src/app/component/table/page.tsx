@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {  addCourses } from '../../../../api/type';
 
 // *** declaring table type *** 
@@ -6,17 +6,20 @@ import {  addCourses } from '../../../../api/type';
     table : addCourses[]
  }
 // *** Edit button handle  *** 
-const handleButtonClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-    alert('Button clicked!');
-      };
 
 
-// *** Delete button handle  *** 
- 
 
+  
 
 // *** Table component *** 
 const Table : React.FC<Table> = ({ table }) => {
+const [clickCount, setClickCount] = useState("");
+
+const handleClick = () => {
+    setClickCount(prevCount => prevCount + 1);
+   
+  };
+
     return (
     <>
         <div className="overflow-x-auto py-8">
@@ -24,9 +27,12 @@ const Table : React.FC<Table> = ({ table }) => {
                     {/* head */}
                     <thead>
                     <tr>
-                        <th></th>
+                        <th>SL</th>
                         <th>Id</th>
-                        <th>Name</th>
+                        <th>Created By</th>
+                        <th>Updated By</th>
+                        <th>Name (Eng)</th>
+                        <th>Name (Bng)</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -35,9 +41,12 @@ const Table : React.FC<Table> = ({ table }) => {
                         <tr>
                             <td>{idx}</td>
                             <td>{val.id}</td>
+                            <td>{val.created_by}</td>
+                            <td>{val.updated_by}</td>
                             <td>{val.name_en}</td>
+                            <td>{val.name_bn}</td>
                             <td>
-                                <button className="btn btn-warning" onClick="handleButtonClick()">Edit</button>
+                                <button className="btn btn-warning" onClick={ handleClick }>Edit</button>
                                 <button className="btn btn-error ml-5">Delete</button>
                             </td>
                         </tr>

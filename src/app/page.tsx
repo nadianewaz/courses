@@ -1,11 +1,12 @@
-import React , { useEffect, useState } from "react";
+"use client";
+import React  from "react";
 import {  getCreateCourse } from "../../api/api";
 import AddCourse from "./component/add_course/page";
 import Table from "./component/table/page";
+import Add from "./add/page";
 
 export default async function Home() {
-
-  const data = await getCreateCourse();
+const data = await getCreateCourse();
 
   return (
    <>
@@ -16,6 +17,7 @@ export default async function Home() {
         <Table table={data}></Table>
       </div>
     </div>
+    <Add></Add>
    
    </>
   )
