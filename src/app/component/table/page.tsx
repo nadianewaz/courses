@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react';
 import {  addCourses } from '../../../../api/type';
 
@@ -5,21 +6,37 @@ import {  addCourses } from '../../../../api/type';
  export interface Table {
     table : addCourses[]
  }
-// *** Edit button handle  *** 
+ 
 
 
+
+ // *** Delete button handle  *** 
+ const handleSubmit1 = (id: string) => {
+    fetch(`http://localhost:5000/updateCourse/${id}`, {
+      method: "UPDATE",
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data) );
+  };
+
+
+
+
+
+ 
+ // *** Delete button handle  *** 
+const handleSubmit = (id: string) => {
+    fetch(`http://localhost:5000/deleteCourse/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data) );
+  };
 
   
 
 // *** Table component *** 
 const Table : React.FC<Table> = ({ table }) => {
-const [clickCount, setClickCount] = useState("");
-
-const handleClick = () => {
-    setClickCount(prevCount => prevCount + 1);
-   
-  };
-
     return (
     <>
         <div className="overflow-x-auto py-8">
@@ -37,8 +54,8 @@ const handleClick = () => {
                     </tr>
                     </thead>
                     <tbody>
-                        {table.map((val, idx)=> (
-                        <tr>
+                        {table?.map((val, idx)=> (
+                        <tr key={idx}>
                             <td>{idx}</td>
                             <td>{val.id}</td>
                             <td>{val.created_by}</td>
@@ -46,8 +63,8 @@ const handleClick = () => {
                             <td>{val.name_en}</td>
                             <td>{val.name_bn}</td>
                             <td>
-                                <button className="btn btn-warning" onClick={ handleClick }>Edit</button>
-                                <button className="btn btn-error ml-5">Delete</button>
+                                <button className="btn btn-warning" onClick={() => handleSubmit1(val.id)} >Edit</button>
+                                <button className="btn btn-error ml-5" onClick={() => handleSubmit(val.id)}>Delete</button>
                             </td>
                         </tr>
                     ))}
