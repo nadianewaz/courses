@@ -1,42 +1,47 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {  addCourses } from '../../../../api/type';
 
 // *** declaring table type *** 
- export interface Table {
-    table : addCourses[]
+ export interface Course {
+    course : addCourses[]
  }
  
+                          
 
-
-
- // *** Delete button handle  *** 
- const handleSubmit1 = (id: string) => {
-    fetch(`http://localhost:5000/updateCourse/${id}`, {
-      method: "UPDATE",
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data) );
-  };
-
-
-
-
-
- 
- // *** Delete button handle  *** 
-const handleSubmit = (id: string) => {
-    fetch(`http://localhost:5000/deleteCourse/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data) );
-  };
-
-  
 
 // *** Table component *** 
-const Table : React.FC<Table> = ({ table }) => {
+const course : React.FC<Course> = ({ course }) => {
+
+    const [courses, setCourses] = useState<any>([]);
+
+    useEffect(()=> {
+        setCourses(course);
+        console.log("===============Courses=================")
+        console.log(courses);
+    }, [course]);
+
+
+     // *** Update button handle  *** 
+    const handleUpdate = (id: string) => {
+        fetch(`http://localhost:5000/updateCourse/${id}`, {
+        method: "UPDATE",
+        })
+        .then((res) => res.json())
+        .then((data) => console.log(data) );
+    };
+
+    // *** Delete button handle  *** 
+    const handleDelete = (id: string) => {
+        fetch(`http://localhost:5000/deleteCourse/${id}`, {
+        method: "DELETE",
+        }).then((res) => {
+            console.log(res);
+            setCourses(courses.filter((t: { id: string; })=>t.id != id))
+            console.log(course);
+        });
+    };
+
     return (
     <>
         <div className="overflow-x-auto py-8">
@@ -54,7 +59,7 @@ const Table : React.FC<Table> = ({ table }) => {
                     </tr>
                     </thead>
                     <tbody>
-                        {table?.map((val, idx)=> (
+                        {courses?.map((val:any, idx:number)=> (
                         <tr key={idx}>
                             <td>{idx}</td>
                             <td>{val.id}</td>
@@ -63,8 +68,8 @@ const Table : React.FC<Table> = ({ table }) => {
                             <td>{val.name_en}</td>
                             <td>{val.name_bn}</td>
                             <td>
-                                <button className="btn btn-warning" onClick={() => handleSubmit1(val.id)} >Edit</button>
-                                <button className="btn btn-error ml-5" onClick={() => handleSubmit(val.id)}>Delete</button>
+                                <button className="btn btn-warning" onClick={() => handleUpdate(val.id)} >Edit</button>
+                                <button className="btn btn-error ml-5" onClick={() => handleDelete(val.id)}>Delete</button>
                             </td>
                         </tr>
                     ))}
@@ -72,7 +77,7 @@ const Table : React.FC<Table> = ({ table }) => {
                 </table>
         </div>
     </>
-    );
+    );                
 };
 
-export default Table;
+export default course;

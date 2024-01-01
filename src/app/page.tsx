@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import AddCourse from "./component/add_course/page";
 import Table from "./component/table/page";
 import Add from "./add/page";
+import course from "./component/table/page";
 
 export default  function Home() {
   const [table, setTable] = useState([]);
@@ -23,10 +24,18 @@ console.log("data",table);
       <div className="text-center flex flex-col">
         <h1 className="text-2xl font-bold py-5">CRUD</h1>
         <AddCourse></AddCourse>
-        <Table table={table}></Table>
+        <Table course={course}></Table>  
+
+       
+        
+        
+
+       {/* <table></table>  */}
+
       </div>
     </div>
-    <Add></Add>
+
+    {/* <Add></Add>  */}
     
    
    </>

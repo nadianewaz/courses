@@ -1,7 +1,8 @@
 "use client"
+import Link from 'next/link';
 import React, { useState } from 'react';
 
-const Add = () => {
+const add = () => {
   const [formData, setFormData] = useState({
     created_by: '',
     updated_by: '',
@@ -17,6 +18,7 @@ const Add = () => {
   const handleSubmit = async (e: any) => {
     console.log("==============================================");
     e.preventDefault();
+    
     await fetch("http://localhost:5000/createCourse", {
       method: "POST",
       headers: {
@@ -57,7 +59,7 @@ const Add = () => {
                   id="created_by"
                   autoComplete="given-name"
                  onChange={handleChange}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-1.5 py-1.5 text-white-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -73,7 +75,7 @@ const Add = () => {
                   name="updated_by"
                   id="updated-by"
                   autoComplete="family-name"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-1.5 py-1.5 text-white-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -89,7 +91,7 @@ const Add = () => {
                   name="name_en"
                   id="name_en"
                   autoComplete="family-name"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-1.5 py-1.5 text-white-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -105,14 +107,16 @@ const Add = () => {
                   name="name_bn" 
                   id="name_bn" 
                   autoComplete="family-name"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-1.5 py-1.5 text-white-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
 
            </div>
 
-           <button onClick={handleSubmit} className='btn btn-success mt-12 px-16'>Save</button>
+           {/* <button onClick={handleSubmit} className='btn btn-success mt-12 px-16'>Save</button>    */}
+
+           <Link href="/course">  Save  </Link>
         </div>   
 
        </div>
@@ -126,4 +130,4 @@ const Add = () => {
     );
 };
 
-export default Add;
+export default add;
