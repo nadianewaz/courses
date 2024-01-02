@@ -1,8 +1,12 @@
 "use client"
 import Link from 'next/link';
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
-const add = () => {
+
+const Add = () => {
+  const router = useRouter();
+
   const [formData, setFormData] = useState({
     created_by: '',
     updated_by: '',
@@ -10,6 +14,10 @@ const add = () => {
     name_bng: '',
   });
 
+ 
+  
+
+  // **** Form handle **** 
   const handleChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -28,6 +36,7 @@ const add = () => {
     }).then((response) => {
       console.log("==============================================");
       console.log(response);
+      router.push('/'); 
     }).catch((error) => {
         console.error(error);
     });
@@ -38,22 +47,20 @@ const add = () => {
         <>
         <div className="max-w-4xl mx-auto">
             <div className="text-center flex flex-col">
-                <h1 className="text-2xl font-bold py-5">Fill up this information</h1>
+                <h1 className="text-2xl font-bold py-10">Fill up this information</h1>
                 
  {/* ***** Form ****  */}
-         <form>
+      <form onSubmit={handleSubmit}>
       <div className="space-y-12">
-        <div className="border-b border-gray-900/10 pb-12"> 
+        <div className="border-b border-gray-900/10 pb-12 mb-5"> 
        
 
 
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-3">
-              <label htmlFor="created-by" className="block text-sm font-medium leading-6 text-white-900">
-                Created By 
-              </label>
               <div className="mt-2">
                 <input
+                  placeholder='Created By'
                   type="text"
                   name="created_by"
                   id="created_by"
@@ -65,11 +72,9 @@ const add = () => {
             </div>
 
             <div className="sm:col-span-3">
-              <label htmlFor="updated-by" className="block text-sm font-medium leading-6 text-white-900">
-                Updated By 
-              </label>
               <div className="mt-2">
                 <input
+                 placeholder='Updated By'
                   type="text"
                   onChange={handleChange}
                   name="updated_by"
@@ -81,11 +86,9 @@ const add = () => {
             </div>
 
             <div className="sm:col-span-3">
-              <label htmlFor="name_en(eng)" className="block text-sm font-medium leading-6 text-white-900">
-              Name (Eng)
-              </label>
-              <div className="mt-2">
+             <div className="mt-2">
                 <input
+                placeholder='Name (Eng)'
                   type="text"
                   onChange={handleChange}
                   name="name_en"
@@ -97,11 +100,9 @@ const add = () => {
             </div>
 
             <div className="sm:col-span-3">
-              <label htmlFor="name_bn(bng)" className="block text-sm font-medium leading-6 text-white-900">
-              Name (Bng)
-              </label>
               <div className="mt-2">
                 <input
+                 placeholder='Name (Bng)'
                   type="text"
                   onChange={handleChange}
                   name="name_bn" 
@@ -114,14 +115,15 @@ const add = () => {
 
            </div>
 
-           {/* <button onClick={handleSubmit} className='btn btn-success mt-12 px-16'>Save</button>    */}
-
-           <Link href="/course">  Save  </Link>
-        </div>   
+       
+            {/* **** Save Button ****  */}
+            <button  className='btn btn-success mt-12 px-16'>Save</button>   
+          
+     
+          </div>   
 
        </div>
     </form>
-
             
             </div>
         </div>
@@ -130,4 +132,4 @@ const add = () => {
     );
 };
 
-export default add;
+export default Add;

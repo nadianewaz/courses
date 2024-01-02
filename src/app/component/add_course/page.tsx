@@ -9,13 +9,17 @@ const AddCourse = () => {
     const router = useRouter()
     return (
         <>
-         {/* <button className='btn btn-success'> Add Courses </button>     */}
+         {/* <button className='btn btn-success'> Add Courses </button>      */}
 
-        {/* <button type="button" onClick={() => router.push('/Add')}>    
-         Add Courses
-        </button>  */}
+       
 
-        <Link href="/add">  Add Courses </Link>
+    
+
+        <Link href="/add">
+                
+            <button className='btn btn-success'>Add Courses</button> 
+                
+        </Link>
 
          
         </>

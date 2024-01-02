@@ -1,25 +1,30 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import {  addCourses } from '../../../../api/type';
+import { addCourse} from '../../../api/type';
+
 
 // *** declaring table type *** 
- export interface Course {
-    course : addCourses[]
+ export interface Table {
+   table : addCourse[]
  }
  
-                          
-
+                                   
 
 // *** Table component *** 
-const course : React.FC<Course> = ({ course }) => {
+const Table : React.FC<Table> = ({  }) => {
+const [courses, setCourses] = useState<any>([]);
 
-    const [courses, setCourses] = useState<any>([]);
+const loadInfo = () => {
+    fetch("http://localhost:5000/readCourse")
+      .then((res) => res.json())
+      .then((data) => setCourses(data));
+  };
 
     useEffect(()=> {
-        setCourses(course);
-        console.log("===============Courses=================")
-        console.log(courses);
-    }, [course]);
+        loadInfo()
+        console.log("===========================================");
+       
+    }, []);
 
 
      // *** Update button handle  *** 
@@ -38,7 +43,7 @@ const course : React.FC<Course> = ({ course }) => {
         }).then((res) => {
             console.log(res);
             setCourses(courses.filter((t: { id: string; })=>t.id != id))
-            console.log(course);
+           
         });
     };
 
@@ -80,4 +85,4 @@ const course : React.FC<Course> = ({ course }) => {
     );                
 };
 
-export default course;
+export default Table;

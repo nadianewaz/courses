@@ -1,6 +1,6 @@
 // **** type declaration for json data **** 
 
-export interface addCourses {
+export interface addCourse {
     id: string,
     created_by: string,
     updated_by: string
