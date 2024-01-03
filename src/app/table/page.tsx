@@ -19,9 +19,12 @@ const loadInfo = () => {
       .then((res) => res.json())
       .then((data) => setCourses(data));
   };
+    
 
+
+    // ***=== table data render ==*** 
     useEffect(()=> {
-        loadInfo()
+        loadInfo() 
         console.log("===========================================");
        
     }, []);

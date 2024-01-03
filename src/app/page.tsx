@@ -16,9 +16,9 @@ const loadInfo = () => {
     .then((data) => setTable(data));
 };
 
-    // useEffect(() => {
-    // loadInfo();
-    // }, []);
+    useEffect(() => {
+    loadInfo();
+    }, []);
 
 console.log("data",table);
   return (

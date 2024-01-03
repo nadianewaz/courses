@@ -2,7 +2,8 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-
+import Datepicker from '../component/datepicker/page';
+import DateForm from '../component/date/page';
 
 const Add = () => {
   const router = useRouter();
@@ -48,13 +49,19 @@ const Add = () => {
         <div className="max-w-4xl mx-auto">
             <div className="text-center flex flex-col">
                 <h1 className="text-2xl font-bold py-10">Fill up this information</h1>
+
+                <Datepicker></Datepicker>
+
+                
                 
  {/* ***** Form ****  */}
       <form onSubmit={handleSubmit}>
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12 mb-5"> 
        
-
+       {/* *** Date selected button ***  */}
+       
+       
 
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-3">
