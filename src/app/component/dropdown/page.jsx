@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
-import './style.css'
+import './css/style.css'
+
 
 const Dropdown = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -13,13 +14,13 @@ const Dropdown = () => {
     return (
         <>
 
-<div className="dropdown">
+    <div className="dropdown">
       <button onClick={toggleDropdown} className="dropdown-toggle">
         Dropdown Button
       </button>
       {isOpen && (
         <div className="dropdown-content">
-
+           <p>Dropdown Content Here</p>
       
         </div>
       )}
