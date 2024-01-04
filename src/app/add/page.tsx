@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Datepicker from '../component/datepicker/page';
-import DateForm from '../component/date/page';
+import Radio from '../component/radio/page';
 
 const Add = () => {
   const router = useRouter();
@@ -16,7 +16,6 @@ const Add = () => {
   });
 
  
-  
 
   // **** Form handle **** 
   const handleChange = (e: { target: { name: any; value: any; }; }) => {
@@ -46,24 +45,28 @@ const Add = () => {
 
     return (
         <>
+       
+       <h1 className="text-2xl font-bold pt-5 pb-20 text-center text-success">Fill up this information</h1>
+       
+      {/* *** Date selected button ***  */}
+       <div className='flex ml-64 space-x-40'>
+        <Datepicker></Datepicker>
+        <Add></Add>
+        <Radio></Radio>
+       </div>
+       
+      
         <div className="max-w-4xl mx-auto">
-            <div className="text-center flex flex-col">
-                <h1 className="text-2xl font-bold py-10">Fill up this information</h1>
-
-                <Datepicker></Datepicker>
-
-                
-                
- {/* ***** Form ****  */}
+            <div className="text-center flex flex-col pt-16">
+               
+              
+    {/* ***** Form ****  */}
       <form onSubmit={handleSubmit}>
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12 mb-5"> 
        
-       {/* *** Date selected button ***  */}
-       
-       
-
-          <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+    
+       <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-3">
               <div className="mt-2">
                 <input
@@ -124,7 +127,7 @@ const Add = () => {
 
        
             {/* **** Save Button ****  */}
-            <button  className='btn btn-success mt-12 px-16'>Save</button>   
+            <button  className='btn btn-success mt-28 px-16'>Save</button>   
           
      
           </div>   

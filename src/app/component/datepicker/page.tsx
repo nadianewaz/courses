@@ -9,7 +9,7 @@ function Date() {
   };
 
   const handleSubmit = (e : any) => {
-    e.preventDefault();
+    // e.preventDefault();
     // Handle form submission with the selectedDate
     console.log('Selected Date:', selectedDate);
   };
@@ -29,6 +29,7 @@ function Date() {
           border: '1px solid #ccc',
           fontFamily: 'Arial, sans-serif',
           fontSize: '16px',
+      
           
           }}
       />
