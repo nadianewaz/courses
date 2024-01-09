@@ -9,13 +9,8 @@ const AddCourse = () => {
     const router = useRouter()
     return (
         <>
-         {/* <button className='btn btn-success'> Add Courses </button>      */}
-
        
-
-    
-
-        <Link href="/add">
+         <Link href="/add">
                 
             <button className='btn btn-success'>Add Courses</button> 
                 

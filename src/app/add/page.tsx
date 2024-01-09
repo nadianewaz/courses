@@ -4,15 +4,18 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Datepicker from '../component/datepicker/page';
 import Radio from '../component/radio/page';
+import App from '../component/location/page';
+
 
 const Add = () => {
   const router = useRouter();
-
+  const [selectedKeys, setSelectedKeys] = React.useState(new Set(["Dhaka"]));
   const [formData, setFormData] = useState({
     created_by: '',
     updated_by: '',
     name_en: '',
-    name_bng: '',
+    name_bn: '',
+    location: '',
   });
 
  
@@ -21,11 +24,14 @@ const Add = () => {
   const handleChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
   };
 
   const handleSubmit = async (e: any) => {
-    console.log("==============================================");
+    console.log("=============================================");
     e.preventDefault();
+    console.log(formData);
+   
     
     await fetch("http://localhost:5000/createCourse", {
       method: "POST",
@@ -42,26 +48,33 @@ const Add = () => {
     });
   }
 
+  const handleLocationChange = (location: string) => {
+    console.log("PARENT LOCATION METHOD")
+    setFormData({...formData, location: location});
+  }
+
 
     return (
         <>
        
        <h1 className="text-2xl font-bold pt-5 pb-20 text-center text-success">Fill up this information</h1>
        
-      {/* *** Date selected button ***  */}
-       <div className='flex ml-64 space-x-40'>
-        <Datepicker></Datepicker>
-        <Add></Add>
-        <Radio></Radio>
-       </div>
-       
-      
+   
         <div className="max-w-4xl mx-auto">
-            <div className="text-center flex flex-col pt-16">
+            <div className="text-center flex flex-col pt-16 mt-10"> 
+            {/* margin  */}
                
               
     {/* ***** Form ****  */}
       <form onSubmit={handleSubmit}>
+        <div className='flex ml-64 space-x-40'>
+        <App updateLocation={handleLocationChange}></App>
+        <Datepicker></Datepicker>
+        <Radio></Radio>
+        </div>
+
+
+
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12 mb-5"> 
        
@@ -131,8 +144,7 @@ const Add = () => {
           
      
           </div>   
-
-       </div>
+        </div>
     </form>
             
             </div>
@@ -142,4 +154,4 @@ const Add = () => {
     );
 };
 
-export default Add;
+export default Add; 
