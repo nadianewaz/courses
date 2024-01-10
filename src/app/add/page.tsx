@@ -1,5 +1,4 @@
 "use client"
-import Link from 'next/link';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Datepicker from '../component/datepicker/page';
@@ -16,6 +15,7 @@ const Add = () => {
     name_en: '',
     name_bn: '',
     location: '',
+    date: '',
   });
 
  
@@ -30,7 +30,7 @@ const Add = () => {
   const handleSubmit = async (e: any) => {
     console.log("=============================================");
     e.preventDefault();
-    console.log(formData);
+    console.log(formData);  
    
     
     await fetch("http://localhost:5000/createCourse", {
@@ -48,13 +48,22 @@ const Add = () => {
     });
   }
 
+  // *****  Callback Function declaration for Location  ***** 
   const handleLocationChange = (location: string) => {
-    console.log("PARENT LOCATION METHOD")
     setFormData({...formData, location: location});
+ 
   }
-
-
-    return (
+  // *****  Callback Function declaration for Date  ***** 
+  const handleDateChange = (date: string) => {
+    setFormData({...formData, date: date});
+ 
+  }
+  // *****  Callback Function declaration for Paid Status  ***** 
+  const handlePaidChange = (location: string) => {
+    setFormData({...formData, location: location});
+ 
+  }
+   return (
         <>
        
        <h1 className="text-2xl font-bold pt-5 pb-20 text-center text-success">Fill up this information</h1>
@@ -69,7 +78,7 @@ const Add = () => {
       <form onSubmit={handleSubmit}>
         <div className='flex ml-64 space-x-40'>
         <App updateLocation={handleLocationChange}></App>
-        <Datepicker></Datepicker>
+        <Datepicker updateDateChange={handleDateChange}></Datepicker>
         <Radio></Radio>
         </div>
 

@@ -1,11 +1,17 @@
 "use client";
 import { useState } from 'react';
 
-function Date() {
+// ****** Date declaration ****** 
+interface DateProps {
+  updateDateChange: (date: string) => void;
+}
+
+const Date: React.FC<DateProps> = ({updateDateChange}) => {
   const [selectedDate, setSelectedDate] = useState('');
 
   const handleDateChange = (e : any) => {
     setSelectedDate(e.target.value);
+    updateDateChange(); 
   };
 
   const handleSubmit = (e : any) => {

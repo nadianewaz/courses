@@ -18,7 +18,6 @@ const App: React.FC<LocationProps> = ({updateLocation}) => {
     [selectedKeys]
   );
 
- 
   const handleSelectionChange = (keys : any) => {
     setSelectedKeys(keys);
     updateLocation(keys);
