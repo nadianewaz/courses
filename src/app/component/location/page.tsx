@@ -11,14 +11,15 @@ interface LocationProps {
 const App: React.FC<LocationProps> = ({updateLocation}) => {
   const [selectedKeys, setSelectedKeys] = React.useState(new Set(["Dhaka"]));
 
-  const items = ["Dhaka", "Chittagong", "Sylhet", "Barishal"];
+  const items: string[] = ["Dhaka", "Chittagong", "Sylhet", "Barishal"];
 
   const selectedValue = React.useMemo(
-    () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
+    () => Array.from(selectedKeys).join(",").replaceAll("_", " "),
     [selectedKeys]
   );
 
   const handleSelectionChange = (keys : any) => {
+    console.log(keys);
     setSelectedKeys(keys);
     updateLocation(keys);
   };
@@ -42,9 +43,12 @@ const App: React.FC<LocationProps> = ({updateLocation}) => {
         selectedKeys={selectedKeys}
         onSelectionChange={handleSelectionChange}
       >
-         {items.map((item) => (
-          <DropdownItem className="p-3" key={item}> {item}</DropdownItem>
-        )) ?? 'Location'}
+      { items.length > 0 
+         ?
+         items.map((item) => (
+          <DropdownItem className="p-3" key={item}> {item}</DropdownItem> ?? 'location'
+        )) 
+        : <DropdownItem className="p-3">location</DropdownItem>}
       </DropdownMenu>
     </Dropdown>
   );

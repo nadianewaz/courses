@@ -28,7 +28,6 @@ const Add = () => {
   };
 
   const handleSubmit = async (e: any) => {
-    console.log("=============================================");
     e.preventDefault();
     console.log(formData);  
    
@@ -40,7 +39,6 @@ const Add = () => {
       },
       body: JSON.stringify(formData),
     }).then((response) => {
-      console.log("==============================================");
       console.log(response);
       router.push('/'); 
     }).catch((error) => {

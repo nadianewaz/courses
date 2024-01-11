@@ -21,9 +21,7 @@ const loadInfo = () => {
     // ***=== table data render ==*** 
     useEffect(()=> {
         loadInfo() 
-        console.log("===========================================");
-       
-    }, []);
+        }, []);
 
 
      // *** Update button handle  *** 
