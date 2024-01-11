@@ -16,7 +16,6 @@ const AddCourse = () => {
                 
         </Link>
 
-         
         </>
     );
 };

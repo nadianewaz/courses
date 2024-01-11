@@ -28,13 +28,13 @@ const App: React.FC<LocationProps> = ({updateLocation}) => {
       <DropdownTrigger>
         <Button 
           variant="bordered" 
-          className="capitalize btn m-8"
+          className="capitalize btn mx-8 px-10 cursor-pointer"
         >
           {selectedValue}
         </Button>
       </DropdownTrigger>
       <DropdownMenu 
-      
+        className="bg-white text-black"
         aria-label="Single selection example"
         variant="flat"
         disallowEmptySelection
@@ -44,7 +44,7 @@ const App: React.FC<LocationProps> = ({updateLocation}) => {
       >
          {items.map((item) => (
           <DropdownItem className="p-3" key={item}> {item}</DropdownItem>
-        ))}
+        )) ?? 'Location'}
       </DropdownMenu>
     </Dropdown>
   );

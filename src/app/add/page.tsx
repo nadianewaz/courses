@@ -8,7 +8,6 @@ import App from '../component/location/page';
 
 const Add = () => {
   const router = useRouter();
-  const [selectedKeys, setSelectedKeys] = React.useState(new Set(["Dhaka"]));
   const [formData, setFormData] = useState({
     created_by: '',
     updated_by: '',
@@ -16,6 +15,7 @@ const Add = () => {
     name_bn: '',
     location: '',
     date: '',
+    paidstatus: ''
   });
 
  
@@ -59,8 +59,8 @@ const Add = () => {
  
   }
   // *****  Callback Function declaration for Paid Status  ***** 
-  const handlePaidChange = (location: string) => {
-    setFormData({...formData, location: location});
+  const handlePaidChange = (paidstatus: string) => {
+    setFormData({...formData, paidstatus: paidstatus});
  
   }
    return (
@@ -70,16 +70,16 @@ const Add = () => {
        
    
         <div className="max-w-4xl mx-auto">
-            <div className="text-center flex flex-col pt-16 mt-10"> 
+            <div className="text-center flex flex-col"> 
             {/* margin  */}
                
               
     {/* ***** Form ****  */}
       <form onSubmit={handleSubmit}>
-        <div className='flex ml-64 space-x-40'>
+        <div className='flex space-x-40'>
         <App updateLocation={handleLocationChange}></App>
         <Datepicker updateDateChange={handleDateChange}></Datepicker>
-        <Radio></Radio>
+        <Radio updatePaidstatusChange={handlePaidChange}></Radio>
         </div>
 
 
@@ -88,7 +88,7 @@ const Add = () => {
         <div className="border-b border-gray-900/10 pb-12 mb-5"> 
        
     
-       <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+       <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 mt-28">
             <div className="sm:col-span-3">
               <div className="mt-2">
                 <input

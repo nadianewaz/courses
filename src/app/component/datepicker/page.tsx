@@ -11,7 +11,7 @@ const Date: React.FC<DateProps> = ({updateDateChange}) => {
 
   const handleDateChange = (e : any) => {
     setSelectedDate(e.target.value);
-    updateDateChange(); 
+    updateDateChange(e.target.value); 
   };
 
   const handleSubmit = (e : any) => {

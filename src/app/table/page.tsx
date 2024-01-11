@@ -8,10 +8,8 @@ import { addCourse} from '../../../api/type';
    table : addCourse[]
  }
  
-                                   
-
 // *** Table component *** 
-const Table : React.FC<Table> = ({  }) => {
+const Table : React.FC<Table> = ({ }) => {
 const [courses, setCourses] = useState<any>([]);
 
 const loadInfo = () => {
@@ -20,8 +18,6 @@ const loadInfo = () => {
       .then((data) => setCourses(data));
   };
     
-
-
     // ***=== table data render ==*** 
     useEffect(()=> {
         loadInfo() 
